@@ -201,7 +201,7 @@ namespace LavishScript2
 		public:
 
 			// This is an array enumeration callback. It prints the string value of an array element.
-			static bool __stdcall print_enum(unsigned int nValue, class LavishScript2::LS2CodeBoxValue &value, void *pass_thru)
+			static bool __stdcall print_enum(size_t nValue, class LavishScript2::LS2CodeBoxValue &value, void *pass_thru)
 			{
 				// smart refs handle decrementing the ref count when leaving scope
 				LavishScript2::LS2SmartRef<LavishScript2::ILS2String> pString;

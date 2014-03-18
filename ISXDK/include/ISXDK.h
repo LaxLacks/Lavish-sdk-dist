@@ -1,7 +1,9 @@
 #pragma once
+#pragma pack(push)
+#pragma pack(8)
 //
 // Inner Space Extension Library
-// (c) 2004-2005 Lavish Software, LLC
+// (c) 2004-2014 Lavish Software, LLC
 //
 
 #define ISXDK_VERSION 0x0034
@@ -511,3 +513,4 @@ unsigned int RegisterPersistentClass(const char *name)\
 }
 
 #pragma warning(pop)
+#pragma pack(pop)

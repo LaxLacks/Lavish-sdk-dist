@@ -67,7 +67,7 @@ static LONG EzCrashFilter(_EXCEPTION_POINTERS *pExceptionInfo,const char *szIden
     va_list vaList;
 
     va_start( vaList, szIdentifier );
-    vsprintf(szOutput,szIdentifier, vaList);
+    vsprintf_s(szOutput,szIdentifier, vaList);
 
 	IS_SystemCrashLog(pExtension,pISInterface,hSystemService,pExceptionInfo,szOutput);
 

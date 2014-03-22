@@ -13,7 +13,7 @@ LGUIFullTemplateFrame::~LGUIFullTemplateFrame(void)
 }
 bool LGUIFullTemplateFrame::IsTypeOf(char *TestFactory)
 {
-	return (!stricmp(TestFactory,"fulltemplateframe")) || LGUIFrame::IsTypeOf(TestFactory);
+	return (!_stricmp(TestFactory,"fulltemplateframe")) || LGUIFrame::IsTypeOf(TestFactory);
 }
 bool LGUIFullTemplateFrame::FromXML(class XMLNode *pXML, class XMLNode *pTemplate)
 {
@@ -40,7 +40,7 @@ void LGUIFullTemplateFrame::Render()
 	if (pText)
 	{
 		char Temp[256];
-		sprintf(Temp,"This frame has been rendered %d times.",Count);
+		sprintf_s(Temp,"This frame has been rendered %d times.",Count);
 		pText->SetText(Temp);
 	}
 

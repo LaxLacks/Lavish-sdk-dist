@@ -20,7 +20,7 @@ bool FullTemplateType::ToText(LSOBJECTDATA ObjectData, char *buf, unsigned int b
 	if (!ObjectData.Ptr)
 		return false;
 
-	strcpy(buf,"ISXFullTemplate");
+	strcpy_s(buf,buflen,"ISXFullTemplate");
 	return true;
 }
 

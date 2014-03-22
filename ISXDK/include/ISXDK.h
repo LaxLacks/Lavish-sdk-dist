@@ -450,9 +450,9 @@ public:
 			ModulePath[0] = '.'; \
 			ModulePath[1] = 0; \
 		}\
-		sprintf(INIFileName, "%s\\%s.ini", ModulePath, _name_); \
-		sprintf(XMLFileName, "%s.xml", _name_); \
-		sprintf(PluginLog, "%s\\%s.log", ModulePath, _name_); \
+		sprintf_s(INIFileName, "%s\\%s.ini", ModulePath, _name_); \
+		sprintf_s(XMLFileName, "%s.xml", _name_); \
+		sprintf_s(PluginLog, "%s\\%s.log", ModulePath, _name_); \
 	}\
 	else if (ul_reason_for_call == DLL_PROCESS_DETACH)\
 	{\

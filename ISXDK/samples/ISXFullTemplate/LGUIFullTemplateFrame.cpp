@@ -3,7 +3,7 @@
 
 LGUIFactory<LGUIFullTemplateFrame> FullTemplateFrameFactory("fulltemplateframe");
 
-LGUIFullTemplateFrame::LGUIFullTemplateFrame(char *p_Factory, LGUIElement *p_pParent, char *p_Name):LGUIFrame(p_Factory,p_pParent,p_Name)
+LGUIFullTemplateFrame::LGUIFullTemplateFrame(const char *p_Factory, LGUIElement *p_pParent, const char *p_Name):LGUIFrame(p_Factory,p_pParent,p_Name)
 {
 	pText=0;
 	Count=0;

@@ -427,81 +427,56 @@ public:
 	ISInterface *pInterface;
 };
 
-#define ISXPreSetup(_name_,_class_) \
-char ActualModulePath[MAX_PATH]={0}; \
-char ModulePath[MAX_PATH]={0}; \
-char PluginLog[MAX_PATH]={0}; \
-char INIFileName[MAX_PATH]={0}; \
-char XMLFileName[MAX_PATH]={0}; \
-const char *ModuleFileName=0; \
-_class_ *pExtension=0; \
-HMODULE g_hModule=0; \
-BOOL APIENTRY DllMain( HANDLE hModule, \
-                      DWORD  ul_reason_for_call, \
-                      LPVOID lpReserved \
-                      ) \
+
+#define ISXDllMain(_name_,_class_) \
+	BOOL APIENTRY DllMain(HANDLE hModule, \
+	DWORD  ul_reason_for_call, \
+	LPVOID lpReserved \
+	) \
 { \
-    if (ul_reason_for_call == DLL_PROCESS_ATTACH) \
+	if (ul_reason_for_call == DLL_PROCESS_ATTACH) \
 	{ \
-	g_hModule=(HMODULE)hModule; \
-	DWORD ResultLen = GetModuleFileName((HMODULE)hModule,ModulePath,sizeof(ModulePath)); \
-	memcpy(ActualModulePath,ModulePath,ResultLen+1); \
-		if (char *pSlash=strrchr(ModulePath,'\\')) \
+		g_hModule = (HMODULE)hModule; \
+		DWORD ResultLen = GetModuleFileName((HMODULE)hModule, ModulePath, sizeof(ModulePath)); \
+		memcpy(ActualModulePath, ModulePath, ResultLen + 1); \
+		if (char *pSlash = strrchr(ModulePath, '\\')) \
 		{ \
-			*pSlash=0;\
-			ModuleFileName=&pSlash[1]; \
+			*pSlash = 0; \
+			ModuleFileName = &pSlash[1]; \
 		}\
 		else \
 		{\
-			ModuleFileName=ActualModulePath; \
-			ModulePath[0]='.';\
-			ModulePath[1]=0;\
+			ModuleFileName = ActualModulePath; \
+			ModulePath[0] = '.'; \
+			ModulePath[1] = 0; \
 		}\
-		sprintf(INIFileName,"%s\\%s.ini",ModulePath,_name_);\
-		sprintf(XMLFileName,"%s.xml",_name_);\
-		sprintf(PluginLog,"%s\\%s.log",ModulePath,_name_);\
+		sprintf(INIFileName, "%s\\%s.ini", ModulePath, _name_); \
+		sprintf(XMLFileName, "%s.xml", _name_); \
+		sprintf(PluginLog, "%s\\%s.log", ModulePath, _name_); \
 	}\
 	else if (ul_reason_for_call == DLL_PROCESS_DETACH)\
 	{\
 		if (pExtension)\
 		{\
-			delete pExtension;\
-			pExtension=0;\
+			delete pExtension; \
+			pExtension = 0; \
 		}\
 	}\
-	return TRUE;\
-}\
-extern "C" __declspec(dllexport) ISXInterface * __cdecl CreateISXInterface(unsigned int ISInterfaceVersion) \
-{\
-	if (pExtension || ISInterfaceVersion!=ISXDK_VERSION) \
-		return 0;\
-	pExtension=new _class_;\
-	return pExtension;\
-}\
-\
-extern void __cdecl InitializeISXDK(void *);\
-extern "C" __declspec(dllexport) ISXInterface * __cdecl CreateISXInterfaceEx(void *p) \
-{\
-	if (pExtension)\
-		return 0;\
-	InitializeISXDK(p);\
-	pExtension=new _class_;\
-	return pExtension;\
-}\
-extern "C" __declspec(dllexport) unsigned int ISXDK_Version=ISXDK_VERSION;\
-extern "C" __declspec(dllexport) unsigned int LGUI_Version=LGUI_VERSION;\
+	return TRUE; \
+}
+
+#define ISXDKDependencies(_name_,_class_) \
 class LSTypeDefinition * FindLSTypeDefinition(const char *Name)\
 {\
-	return pISInterface->FindLSTypeDefinition(Name);\
+	return pISInterface->FindLSTypeDefinition(Name); \
 }\
-\
-void *GetTempBuffer(size_t Size, const void *Copy)\
+void *GetTempBuffer(unsigned int Size, const void *Copy)\
 {\
-	return pISInterface->GetTempBuffer(Size,(void*)Copy);\
+	return pISInterface->GetTempBuffer(Size, (void*)Copy); \
 }\
 void RegisterTemporaryObject(class CTempObject *pObject)\
 {\
-	pISInterface->AddTempObject(pObject);\
+	pISInterface->AddTempObject(pObject); \
 }\
 void InvalidatePersistentObject(unsigned int persistentClass, unsigned __int64 persistedValue)\
 {\
@@ -511,6 +486,42 @@ unsigned int RegisterPersistentClass(const char *name)\
 {\
 	return pISInterface->RegisterPersistentClass(name); \
 }
+
+#define ISXExports(_name_,_class_) \
+extern "C" __declspec(dllexport) ISXInterface * __cdecl CreateISXInterface(unsigned int ISInterfaceVersion) \
+{\
+	if (pExtension || ISInterfaceVersion != ISXDK_VERSION) \
+		return 0; \
+	pExtension = new _class_; \
+	return pExtension; \
+}\
+extern void __cdecl InitializeISXDK(void *); \
+extern "C" __declspec(dllexport) ISXInterface * __cdecl CreateISXInterfaceEx(void *p) \
+{\
+	if (pExtension)\
+		return 0; \
+	InitializeISXDK(p); \
+	pExtension = new _class_; \
+	return pExtension; \
+}\
+extern "C" __declspec(dllexport) unsigned int ISXDK_Version = ISXDK_VERSION; \
+extern "C" __declspec(dllexport) unsigned int LGUI_Version = LGUI_VERSION;
+
+#define ISXVariables(_name_,_class_) \
+	char ActualModulePath[MAX_PATH] = { 0 }; \
+	char ModulePath[MAX_PATH] = { 0 }; \
+	char PluginLog[MAX_PATH] = { 0 }; \
+	char INIFileName[MAX_PATH] = { 0 }; \
+	char XMLFileName[MAX_PATH] = { 0 }; \
+	const char *ModuleFileName = 0; \
+	_class_ *pExtension = 0; \
+	HMODULE g_hModule = 0;
+
+#define ISXPreSetup(_name_,_class_) \
+	ISXVariables(_name_, _class_) \
+	ISXDllMain(_name_, _class_); \
+	ISXExports(_name_, _class_); \
+	ISXDKDependencies(_name_, _class_);
 
 #pragma warning(pop)
 #pragma pack(pop)

@@ -470,9 +470,9 @@ class LSTypeDefinition * FindLSTypeDefinition(const char *Name)\
 {\
 	return pISInterface->FindLSTypeDefinition(Name); \
 }\
-void *GetTempBuffer(unsigned int Size, const void *Copy)\
+void *GetTempBuffer(size_t Size, const void *Copy)\
 {\
-	return pISInterface->GetTempBuffer(Size, (void*)Copy); \
+	return pISInterface->GetTempBuffer((unsigned int)Size, (void*)Copy); \
 }\
 void RegisterTemporaryObject(class CTempObject *pObject)\
 {\

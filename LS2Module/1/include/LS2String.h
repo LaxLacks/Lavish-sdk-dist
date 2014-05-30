@@ -40,6 +40,8 @@ namespace LavishScript2
 		// string will be formatted into a temporary buffer fitting this many wchars..
 		LS2String(size_t buffer_wchars, const wchar_t *szFormat, ...);
 
+		static bool Format(ILS2String **ppString, const wchar_t *szFormat, ...);
+
 		~LS2String(void);
 
 		int m_RefCount;

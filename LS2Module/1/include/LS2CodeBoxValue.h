@@ -1,5 +1,5 @@
 #pragma once
-
+#include <crtdefs.h>
 namespace LavishScript2
 {
 	class LS2Exception;
@@ -15,6 +15,7 @@ namespace LavishScript2
 	class ILS2CodeBoxStaticProperty;
 	class ILS2CodeBoxField;
 	class ILS2CodeBoxStaticField;
+	class ILS2CodeBoxDelegate;
 	class ILS2CodeBoxFunction;
 	class ILS2KeyValuePair;
 
@@ -43,6 +44,10 @@ namespace LavishScript2
         VT_UInt32,
         VT_UInt64,
 
+		VT_IntPtr,
+		VT_UIntPtr,
+
+		VT_Delegate,
 		VT_Enum,
 
 		VT_Char,
@@ -54,7 +59,7 @@ namespace LavishScript2
 		VT_Reference,
 
 		VT_Function,
-		VT_Exception,
+		//VT_Exception, // merged into VT_LS2ManagedObject
 
 		// object support
 		VT_Object,
@@ -310,6 +315,9 @@ namespace LavishScript2
 		LS2CodeBoxValue_Null():LS2CodeBoxValue_Decimal(0,VT_Null)
 		{
 		}
+
+		virtual bool Add(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		virtual bool Subtract(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
 
 		virtual LS2CodeBoxValue *Duplicate(LS2Exception **ppException);
 		virtual bool GetString(ILS2String **ppString,LS2Exception **ppException);
@@ -567,6 +575,47 @@ namespace LavishScript2
 	typedef LS2CodeBoxValue_IntT<unsigned __int64,VT_UInt64,_uint64_type,_uint64_format> LS2CodeBoxValue_UInt64;
 #endif
 
+	class LS2CodeBoxValue_IntPtr : public LS2CodeBoxValue
+	{
+	public:
+		LS2CodeBoxValue_IntPtr(const int &value);
+		LS2CodeBoxValue_IntPtr(void *value);
+#ifdef _WIN64
+		LS2CodeBoxValue_IntPtr(const __int64 &value);
+#endif
+
+		static bool New(int &value, LS2CodeBoxValue_IntPtr **ppOutput, LS2Exception **ppException);
+		static bool New(__int64 &value, LS2CodeBoxValue_IntPtr **ppOutput, LS2Exception **ppException);
+		static bool New(void *value, LS2CodeBoxValue_IntPtr **ppOutput, LS2Exception **ppException);
+
+		virtual ~LS2CodeBoxValue_IntPtr();
+
+		virtual LS2CodeBoxValue *Duplicate(LS2Exception **ppException);
+		// numeric
+		virtual bool Add(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		virtual bool Subtract(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		virtual bool Divide(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		virtual bool Multiply(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		virtual bool Modulo(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		virtual bool Power(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		virtual bool Negate(LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		// logical/boolean
+		virtual bool Equal(LS2CodeBoxValue *pValue, bool &output, LS2Exception **ppException);
+		virtual bool LessThan(LS2CodeBoxValue *pValue, bool &output, LS2Exception **ppException);
+		virtual bool LessThanEqual(LS2CodeBoxValue *pValue, bool &output, LS2Exception **ppException);
+
+		virtual __int64 GetLength(LS2Exception **ppException);
+		virtual bool GetBool(LS2Exception **ppException);
+		virtual __int64 GetInt(LS2Exception **ppException);
+		virtual double GetDouble(LS2Exception **ppException);
+		virtual bool GetString(ILS2String **ppString, LS2Exception **ppException);
+		virtual bool GetBinary(LS2Buffer **ppBuffer, LS2Exception **ppException);
+		virtual bool GetType(class ILS2CodeBoxType **ppType);
+		virtual bool GetMetaTable(class ILS2Table **ppTable);
+
+		void* Value;
+	};
+
 	class LS2CodeBoxValue_Enum : public LS2CodeBoxValue
 	{
 	public:
@@ -815,6 +864,24 @@ namespace LavishScript2
 		T *m_pValue;
 	};
 
+	class LS2CodeBoxValue_Delegate : public LS2CodeBoxPointer<LavishScript2::ILS2CodeBoxDelegate>
+	{
+	public:
+		LS2CodeBoxValue_Delegate(LavishScript2::ILS2CodeBoxDelegate &p_delegate);
+		virtual ~LS2CodeBoxValue_Delegate();
+
+		virtual bool GetString(ILS2String **ppString, LS2Exception **ppException);
+		virtual bool GetType(class ILS2CodeBoxType **ppType);
+
+		virtual bool GetMetaTable(class ILS2Table **ppTable);
+
+		virtual bool Add(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+		virtual bool Subtract(LS2CodeBoxValue *pValue, LS2CodeBoxValue **ppOutput, LS2Exception **ppException);
+
+
+//		class ILS2Table *m_pMetaTable;
+	};
+
 	class LS2CodeBoxValue_Reference : public LS2CodeBoxPointer<LavishScript2::LS2CodeBoxValue>
 	{
 	public:
@@ -826,6 +893,7 @@ namespace LavishScript2
 
 		virtual void SetReference(LS2CodeBoxValue *pNewValue, bool bAddRef=true);
 		virtual bool GetMetaTable(class ILS2Table **ppTable);
+
 
 		class ILS2Table *m_pMetaTable;
 	};
@@ -985,6 +1053,7 @@ namespace LavishScript2
 		virtual bool GetMetaTable(class ILS2Table **ppTable);
 	};
 
+	/*
 	class LS2CodeBoxValue_Exception : public LS2CodeBoxPointer<LavishScript2::LS2Exception>
 	{
 	public:

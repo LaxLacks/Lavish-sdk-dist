@@ -106,6 +106,7 @@ namespace LavishScript2
 #define LS2_PROPINPUT_AS_INT16(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Int16,LavishScript2::LS2CodeBoxValue_Int16_var_)
 #define LS2_PROPINPUT_AS_INT32(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Int32,LavishScript2::LS2CodeBoxValue_Int32_var_)
 #define LS2_PROPINPUT_AS_INT64(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Int64,LavishScript2::LS2CodeBoxValue_Int64_var_)
+#define LS2_PROPINPUT_AS_INTPTR(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_IntPtr,LavishScript2::LS2CodeBoxValue_IntPtr_var_)
 #define LS2_PROPINPUT_AS_UINT8(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_UInt8,LavishScript2::LS2CodeBoxValue_UInt8_var_)
 #define LS2_PROPINPUT_AS_UINT16(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_UInt16,LavishScript2::LS2CodeBoxValue_UInt16_var_)
 #define LS2_PROPINPUT_AS_UINT32(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_UInt32,LavishScript2::LS2CodeBoxValue_UInt32_var_)
@@ -116,9 +117,10 @@ namespace LavishScript2
 #define LS2_PROPINPUT_AS_BINARY(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Binary,LavishScript2::LS2CodeBoxValue_Binary,_var_)
 #define LS2_PROPINPUT_AS_ARRAY(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Array,LavishScript2::LS2CodeBoxValue_Array,_var_)
 #define LS2_PROPINPUT_AS_TABLE(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Table,LavishScript2::LS2CodeBoxValue_Table,_var_)
+#define LS2_PROPINPUT_AS_DELEGATE(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Delegate,LavishScript2::LS2CodeBoxValue_Delegate,_var_)
 #define LS2_PROPINPUT_AS_OBJECT(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Object,LavishScript2::LS2CodeBoxValue_Object,_var_)
 #define LS2_PROPINPUT_AS_TYPE(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Type,LavishScript2::LS2CodeBoxValue_Type,_var_)
-#define LS2_PROPINPUT_AS_EXCEPTION(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Exception,LavishScript2::LS2CodeBoxValue_Exception,_var_)
+//#define LS2_PROPINPUT_AS_EXCEPTION(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Exception,LavishScript2::LS2CodeBoxValue_Exception,_var_)
 #define LS2_PROPINPUT_AS_REFERENCE(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Reference,LavishScript2::LS2CodeBoxValue_Reference,_var_)
 #define LS2_PROPINPUT_AS_FUNCTION(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Function,LavishScript2::LS2CodeBoxValue_Function,_var_)
 #define LS2_PROPINPUT_AS_METHOD(_var_)	LS2_PROPINPUT_AS(LavishScript2::VT_Method,LavishScript2::LS2CodeBoxValue_Method,_var_)
@@ -178,6 +180,7 @@ namespace LavishScript2
 #define LS2_SUBJECT_AS_INT16(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Int16,LavishScript2::LS2CodeBoxValue_Int16,_var_)
 #define LS2_SUBJECT_AS_INT32(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Int32,LavishScript2::LS2CodeBoxValue_Int32,_var_)
 #define LS2_SUBJECT_AS_INT64(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Int64,LavishScript2::LS2CodeBoxValue_Int64,_var_)
+#define LS2_SUBJECT_AS_INTPTR(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_IntPtr,LavishScript2::LS2CodeBoxValue_IntPtr,_var_)
 #define LS2_SUBJECT_AS_UINT8(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_UInt8,LavishScript2::LS2CodeBoxValue_UInt8,_var_)
 #define LS2_SUBJECT_AS_UINT16(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_UInt16,LavishScript2::LS2CodeBoxValue_UInt16,_var_)
 #define LS2_SUBJECT_AS_UINT32(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_UInt32,LavishScript2::LS2CodeBoxValue_UInt32,_var_)
@@ -188,9 +191,10 @@ namespace LavishScript2
 #define LS2_SUBJECT_AS_BINARY(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Binary,LavishScript2::LS2CodeBoxValue_Binary,_var_)
 #define LS2_SUBJECT_AS_ARRAY(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Array,LavishScript2::LS2CodeBoxValue_Array,_var_)
 #define LS2_SUBJECT_AS_TABLE(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Table,LavishScript2::LS2CodeBoxValue_Table,_var_)
+#define LS2_SUBJECT_AS_DELEGATE(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Delegate,LavishScript2::LS2CodeBoxValue_Delegate,_var_)
 #define LS2_SUBJECT_AS_OBJECT(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Object,LavishScript2::LS2CodeBoxValue_Object,_var_)
 #define LS2_SUBJECT_AS_TYPE(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Type,LavishScript2::LS2CodeBoxValue_Type,_var_)
-#define LS2_SUBJECT_AS_EXCEPTION(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Exception,LavishScript2::LS2CodeBoxValue_Exception,_var_)
+//#define LS2_SUBJECT_AS_EXCEPTION(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Exception,LavishScript2::LS2CodeBoxValue_Exception,_var_)
 #define LS2_SUBJECT_AS_REFERENCE(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Reference,LavishScript2::LS2CodeBoxValue_Reference,_var_)
 #define LS2_SUBJECT_AS_FUNCTION(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Function,LavishScript2::LS2CodeBoxValue_Function,_var_)
 #define LS2_SUBJECT_AS_METHOD(_var_)	LS2_SUBJECT_AS(LavishScript2::VT_Method,LavishScript2::LS2CodeBoxValue_Method,_var_)
@@ -217,6 +221,7 @@ namespace LavishScript2
 #define LS2_INPUT_AS_INT16(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Int16,LavishScript2::LS2CodeBoxValue_Int16,_var_)
 #define LS2_INPUT_AS_INT32(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Int32,LavishScript2::LS2CodeBoxValue_Int32,_var_)
 #define LS2_INPUT_AS_INT64(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Int64,LavishScript2::LS2CodeBoxValue_Int64,_var_)
+#define LS2_INPUT_AS_INTPTR(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_IntPtr,LavishScript2::LS2CodeBoxValue_IntPtr,_var_)
 #define LS2_INPUT_AS_UINT8(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_UInt8,LavishScript2::LS2CodeBoxValue_UInt8,_var_)
 #define LS2_INPUT_AS_UINT16(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_UInt16,LavishScript2::LS2CodeBoxValue_UInt16,_var_)
 #define LS2_INPUT_AS_UINT32(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_UInt32,LavishScript2::LS2CodeBoxValue_UInt32,_var_)
@@ -227,8 +232,9 @@ namespace LavishScript2
 #define LS2_INPUT_AS_BINARY(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Binary,LavishScript2::LS2CodeBoxValue_Binary,_var_)
 #define LS2_INPUT_AS_ARRAY(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Array,LavishScript2::LS2CodeBoxValue_Array,_var_)
 #define LS2_INPUT_AS_TABLE(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Table,LavishScript2::LS2CodeBoxValue_Table,_var_)
+#define LS2_INPUT_AS_DELEGATE(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Delegate,LavishScript2::LS2CodeBoxValue_Delegate,_var_)
 #define LS2_INPUT_AS_OBJECT(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Object,LavishScript2::LS2CodeBoxValue_Object,_var_)
-#define LS2_INPUT_AS_EXCEPTION(_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Exception,LavishScript2::LS2CodeBoxValue_Exception,_var_)
+//#define LS2_INPUT_AS_EXCEPTION(_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Exception,LavishScript2::LS2CodeBoxValue_Exception,_var_)
 #define LS2_INPUT_AS_TYPE(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Type,LavishScript2::LS2CodeBoxValue_Type,_var_)
 #define LS2_INPUT_AS_REFERENCE(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Reference,LavishScript2::LS2CodeBoxValue_Reference,_var_)
 #define LS2_INPUT_AS_FUNCTION(_n_,_var_)	LS2_INPUT_AS(_n_,LavishScript2::VT_Function,LavishScript2::LS2CodeBoxValue_Function,_var_)
@@ -263,6 +269,116 @@ namespace LavishScript2
 			LavishScript2::LS2CodeBoxInputDeclaration::GenerateDeclarationArray(inputs,sizeof(inputs)/sizeof(inputs[0]),pInputDeclarations);\
 			_type_->RegisterStaticMethod(_name_,pInputDeclarations,_cfunction_);\
 		}
+
+
+
+#define LS2_AUTOPROP_GET_(_function_,_fieldid_variable_,_property_name_,_type_name_) \
+	static bool __stdcall _function_(LavishScript2::LS2CodeBoxValue &subject, LavishScript2::LS2CodeBoxValue **ppOutput, LavishScript2::LS2Exception **ppException) \
+			{ \
+				LS2_SUBJECT_AS(LavishScript2::VT_LS2ManagedObject, LavishScript2::LS2CodeBoxValue_LS2ManagedObject, pObject);\
+				if (_fieldid_variable_ < 0)\
+				{\
+					size_t outFieldID = (size_t)-1;\
+					if (!pObject->m_pValue->ResolveFieldID(L"_" ## _property_name_, outFieldID, ppException))\
+					{\
+						(*ppException)->Tag(L"" ## _type_name_ ## L"." ## _property_name_); \
+						return false;\
+					}\
+					_fieldid_variable_ = (int)outFieldID; \
+				}\
+				if (!pObject->m_pValue->GetField(_fieldid_variable_, ppOutput, ppException))\
+				{\
+					(*ppException)->Tag(L"" ## _type_name_ ## L"." ## _property_name_);\
+					return false;\
+				}\
+				return true;\
+			}
+#define LS2_AUTOPROP_SET_(_function_,_fieldid_variable_,_property_name_,_type_name_) \
+	static bool __stdcall _function_(LavishScript2::LS2CodeBoxValue &subject, LavishScript2::LS2CodeBoxValue &input, LavishScript2::LS2Exception **ppException) \
+			{ \
+				LS2_SUBJECT_AS(LavishScript2::VT_LS2ManagedObject, LavishScript2::LS2CodeBoxValue_LS2ManagedObject, pObject);\
+				if (_fieldid_variable_ < 0)\
+				{\
+					size_t outFieldID = (size_t)-1;\
+					if (!pObject->m_pValue->ResolveFieldID(L"_" ## _property_name_, outFieldID, ppException))\
+					{\
+						(*ppException)->Tag(L"" ## _type_name_ ## L"." ## _property_name_); \
+						return false;\
+					}\
+					_fieldid_variable_ = (int)outFieldID; \
+				}\
+				if (!pObject->m_pValue->SetField(_fieldid_variable_, input, ppException))\
+				{\
+					(*ppException)->Tag(L"" ## _type_name_ ## L"." ## _property_name_);\
+					return false;\
+				}\
+				return true;\
+			}
+
+#define LS2_AUTOPROP_(_get_function_,_set_function_,_fieldid_variable_,_property_name_,_type_name_) \
+	LS2_AUTOPROP_GET_(_get_function_,_fieldid_variable_,_property_name_,_type_name_);\
+	LS2_AUTOPROP_SET_(_set_function_,_fieldid_variable_,_property_name_,_type_name_);
+
+#define LS2_AUTOPROP(_property_,_containing_type_name_) \
+	static int _##_property_##FieldID; \
+	LS2_AUTOPROP_GET_(get_##_property_, _##_property_##FieldID, L"" ## L ## #_property_, _containing_type_name_); \
+	LS2_AUTOPROP_SET_(set_##_property_, _##_property_##FieldID, L"" ## L ## #_property_, _containing_type_name_);
+
+#define LS2_AUTOPROP_GET(_property_,_containing_type_name_) \
+	static int _##_property_##FieldID; \
+	LS2_AUTOPROP_GET_(get_##_property_, _##_property_##FieldID, L"" ## L ## #_property_, _containing_type_name_);
+
+#define LS2_AUTOPROP_SET(_property_,_containing_type_name_) \
+	static int _##_property_##FieldID; \
+	LS2_AUTOPROP_SET_(set_##_property_, _##_property_##FieldID, L"" ## L ## #_property_, _containing_type_name_);
+
+#define LS2_AUTOPROP_FIELD(_class_,_property_) \
+	int _class_::_##_property_##FieldID = -1;
+
+
+/*
+	static bool __stdcall set_##_property_(LavishScript2::LS2CodeBoxValue &subject, LavishScript2::LS2CodeBoxValue &input, LavishScript2::LS2Exception **ppException) \
+			{ \
+			LS2_SUBJECT_AS(LavishScript2::VT_LS2ManagedObject, LavishScript2::LS2CodeBoxValue_LS2ManagedObject, pObject);\
+			if (_##_property_##FieldID < 0)\
+				{\
+				size_t outFieldID = (size_t)-1;\
+				if (!pObject->m_pValue->ResolveFieldID(L"_" ## L ## #_property_), outFieldID, ppException)) \
+					{\
+					(*ppException)->Tag(L"" ## _containing_type_name_ ## L"." ## L ## #_property_); \
+					return false;\
+					}\
+					_##_property_##FieldID = (int)outFieldID; \
+				}\
+				if (!pObject->m_pValue->SetField(_##_property_##FieldID, input, ppException))\
+				{\
+				(*ppException)->Tag(L"" ## _containing_type_name_ ## L"." ## L ## #_property_); \
+				return false;\
+				}\
+				return true;\
+			}
+			*/
+
+//	LS2_AUTOPROP_GET(get_##_property_, _##_property_##FieldID, L"" ## _property_, _containing_type_name_); \
+//	LS2_AUTOPROP_SET(set_##_property_, _##_property_##FieldID, L"" ## _property_, _containing_type_name_);
+
+#define REGISTER_AUTOPROP(_class_,_type_,_property_,_property_type_name_) \
+	_type_->RegisterField(L"_" ## L ## # _property_, _property_type_name_, L"_" ## _property_type_name_ ## L" " ## L ## #_property_, 0, 0); \
+	_type_->RegisterProperty(L ## # _property_, _property_type_name_, 0, &_class_::get_##_property_, &_class_::set_##_property_);
+
+#define REGISTER_AUTOPROP_GET(_class_,_type_,_property_,_property_type_name_) \
+	_type_->RegisterField(L"_" ## L ## # _property_, _property_type_name_, L"_" ## _property_type_name_ ## L" " ## L ## #_property_, 0, 0); \
+	_type_->RegisterProperty(L ## # _property_, _property_type_name_, 0, &_class_::get_##_property_, 0);
+#define REGISTER_AUTOPROP_SET(_class_,_type_,_property_,_property_type_name_) \
+	_type_->RegisterField(L"_" ## L ## # _property_, _property_type_name_, L"_" ## _property_type_name_ ## L" " ## L ## #_property_, 0, 0); \
+	_type_->RegisterProperty(L ## # _property_, _property_type_name_, 0, 0, &_class_::set_##_property_);
+
+
+/*
+#define REGISTER_AUTOPROP(_type_,_property_name_,_property_type_name_,_get_function_,_set_function_) \
+	_type_->RegisterField(L"_" ## _property_name_, _property_type_name_, L"_" ## _property_type_name_ ## L" " ## _property_name_, 0, 0); \
+	_type_->RegisterProperty(_property_name_, _property_type_name_, 0, _get_function_, _set_function_);
+*/
 
 	class ILS2Signal
 	{
@@ -384,6 +500,42 @@ namespace LavishScript2
 		virtual bool GetMetaTable(ILS2Table **ppTable)=0;
 	};
 	typedef LavishScript2::LS2CodeBoxValue_ObjectRefCountedT<LavishScript2::ILS2Event*> LS2CodeBoxValue_Event;
+	/*
+	class LS2RoutedEvent
+	{
+	public:
+		virtual int AddRef();
+		virtual int Delete();
+
+	};
+	typedef LavishScript2::LS2CodeBoxValue_ObjectRefCountedT<LavishScript2::LS2RoutedEvent*> LS2CodeBoxValue_RoutedEvent;
+
+	class LS2EventArgs
+	{
+	public:
+		virtual int AddRef();
+		virtual int Delete();
+
+	};
+	typedef LavishScript2::LS2CodeBoxValue_ObjectRefCountedT<LavishScript2::LS2EventArgs*> LS2CodeBoxValue_EventArgs;
+
+	class LS2RoutedEventArgs : public LS2EventArgs
+	{
+	public:
+		virtual bool GetHandled();
+		virtual void SetHandled(bool new_value);
+
+		virtual void GetOriginalSource(LavishScript2::LS2CodeBoxValue **ppValue);
+		virtual void SetOriginalSource(LavishScript2::LS2CodeBoxValue &value);
+
+		virtual void GetRoutedEvent(LavishScript2::LS2RoutedEvent **ppRoutedEvent);
+		virtual void SetRoutedEvent(LavishScript2::LS2RoutedEvent &routed_event);
+
+		virtual void GetSource(LavishScript2::LS2CodeBoxValue **ppValue);
+		virtual void SetSource(LavishScript2::LS2CodeBoxValue &value);
+	};
+	typedef LavishScript2::LS2CodeBoxValue_ObjectRefCountedT<LavishScript2::LS2RoutedEventArgs*> LS2CodeBoxValue_RoutedEventArgs;
+	/**/
 
 	class ILS2StandardEnvironment : public LavishScript2::ILS2CodeBoxEnvironment
 	{
@@ -432,7 +584,9 @@ namespace LavishScript2
 		virtual void NewEvent(LavishScript2::ILS2Event &in_event, LavishScript2::LS2CodeBoxValue_Event **ppValue)=0;
 		virtual void NewModule(LavishScript2::ILS2AvailableModule &in_module, LavishScript2::LS2CodeBoxValue_Module **ppValue)=0;
 
-		static LavishScript2::ILS2StandardEnvironment *s_pInstance;		
+		bool BootStrapLS2ILResource(HMODULE hModule, const wchar_t *resourceName, const wchar_t *resourceType, LavishScript2::LS2Exception **ppException);
+		bool BootStrapLS2ILFile(const wchar_t *filename, LavishScript2::LS2Exception **ppException);
+		static LavishScript2::ILS2StandardEnvironment *s_pInstance;
 	};
 
 

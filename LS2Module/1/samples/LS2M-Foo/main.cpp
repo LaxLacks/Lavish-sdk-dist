@@ -57,7 +57,7 @@ public:
 			// in this example, we'll refuse to shut down until it's too late to refuse it.
 
 //			printf("LS2MFoo::Shutdown() aborting!\n");
-			*ppException = new LavishScript2::LS2StringException(L"No! Please no! Don't unload me! Think of the kittens.");
+			*ppException = new LavishScript2::LS2Exception(L"System.Exception",L"No! Please no! Don't unload me! Think of the kittens.");
 			return false;
 		}
 

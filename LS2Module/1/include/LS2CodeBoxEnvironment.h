@@ -722,8 +722,10 @@ namespace LavishScript2
 		virtual int AddRef()=0;
 		virtual int Delete()=0;
 
-		// get the number of values in the array
-		virtual size_t GetSize() = 0;
+		// get the capacity of the array (e.g. List.Capacity)
+		virtual size_t GetCapacity() = 0;
+		// get the number of values in the array (e.g. List.Count)
+		virtual size_t GetCount() = 0;
 
 		// resize the array, releasing objects as needed at the end to shrink, or adding Nulls at the end to expand
 		virtual bool Resize(size_t newSize, LavishScript2::ILS2CodeBoxType *pType_optional, LavishScript2::LS2Exception **ppException) = 0;
@@ -758,7 +760,7 @@ namespace LavishScript2
 			if (!GetAt(nValue,pValue))
 			{
 				wchar_t temp[256];
-				_snwprintf_s(temp, 256, L"array value out of range {nValue=%u Size=%u}",nValue,GetSize());
+				_snwprintf_s(temp, 256, L"array value out of range {nValue=%u Count=%u}", (unsigned int)nValue, (unsigned int)GetCount());
 				*ppException = new LavishScript2::LS2OutOfRangeException(temp);
 				return false;
 			}

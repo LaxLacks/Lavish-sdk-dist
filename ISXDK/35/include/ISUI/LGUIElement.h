@@ -628,7 +628,7 @@ public:
 
 	virtual LGUIElement *CreateUIElement(LGUIElement *pParent, const char *Name, class XMLNode *pXML, const char *Template = 0)
 	{
-		T *pElement = new T(Type,pParent,Name);
+		T *pElement = new T((char*)Type,pParent,(char*)Name);
 		
 		if (!pElement->FromXML(pXML,g_UIManager.FindTemplate(Template)))
 		{
@@ -644,7 +644,7 @@ public:
 
 	virtual LGUIElement *CreateUIElement(LGUIElement *pParent, const char *Name)
 	{
-		T *pElement = new T(Type,pParent,Name);
+		T *pElement = new T((char*)Type,pParent,(char*)Name);
 		Elements[pElement]=1;
 		return pElement;
 	}

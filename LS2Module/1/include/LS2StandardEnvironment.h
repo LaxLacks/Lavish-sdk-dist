@@ -30,13 +30,13 @@ namespace LavishScript2
 #define LS2_REQUIRE_INPUTS(_comparison_)	\
 			if (!pInputs)	\
 			{\
-			*ppException = new LavishScript2::LS2InvalidParameterException(L"RequireInputs"##L#_comparison_);	\
+			*ppException = new LavishScript2::LS2InvalidParameterException(L"RequireInputs"## #_comparison_);	\
 				return false;\
 			}\
 			\
 			if (!(pInputs->GetSize() ## _comparison_))\
 			{\
-			*ppException = new LavishScript2::LS2InvalidParameterException(L"RequireInputs"##L#_comparison_);\
+			*ppException = new LavishScript2::LS2InvalidParameterException(L"RequireInputs"## #_comparison_);\
 				return false;				\
 			}
 
@@ -44,7 +44,7 @@ namespace LavishScript2
 			LavishScript2::LS2SmartRef<LavishScript2::LS2CodeBoxValue> _var_;\
 			if (!pInputs->GetAt(_n_,_var_))	\
 			{\
-			*ppException = new LavishScript2::LS2OutOfRangeException(L"No parameter "##L#_n_); \
+			*ppException = new LavishScript2::LS2OutOfRangeException(L"No parameter "## #_n_); \
 				return false;\
 			}
 
@@ -52,12 +52,12 @@ namespace LavishScript2
 	LavishScript2::LS2SmartRef<LavishScript2::LS2CodeBoxValue> ref##_var_;\
 	if (!pInputs->GetAt(_n_,ref##_var_))	\
 			{\
-			*ppException = new LavishScript2::LS2OutOfRangeException(L"No parameter "##L#_n_); \
+			*ppException = new LavishScript2::LS2OutOfRangeException(L"No parameter "## #_n_); \
 				return false;\
 			}\
 			if (!LS2_VALUE_IS(ref##_var_,_valuetype_)) \
 			{	\
-			*ppException = new LavishScript2::LS2InvalidParameterException(L"Expected "##L#_valuetype_##L" as parameter "##L#_n_);	\
+			*ppException = new LavishScript2::LS2InvalidParameterException(L"Expected "## #_valuetype_##" as parameter "## #_n_);	\
 				return false;	\
 			}\
 			_type_ *_var_ = (_type_*)ref##_var_.operator LavishScript2::LS2CodeBoxValue *();
@@ -94,7 +94,7 @@ namespace LavishScript2
 #define LS2_PROPINPUT_AS(_valuetype_,_type_,_var_)	\
 			if (input.m_Type != _valuetype_) \
 			{	\
-			*ppException = new LavishScript2::LS2InvalidParameterException(L"Expected "##L#_valuetype_##L" as property value");	\
+			*ppException = new LavishScript2::LS2InvalidParameterException(L"Expected "## #_valuetype_##" as property value");	\
 				return false;	\
 			}	\
 			_type_ *_var_ = (_type_*)&input;
@@ -167,7 +167,7 @@ namespace LavishScript2
 #define LS2_SUBJECT_AS(_valuetype_,_type_,_var_)	\
 			if (subject.m_Type != _valuetype_) \
 			{	\
-			*ppException = new LavishScript2::LS2IllegalSubjectException(L"Expected "##L#_valuetype_##L" as 'this' object");	\
+			*ppException = new LavishScript2::LS2IllegalSubjectException(L"Expected "## #_valuetype_##" as 'this' object");	\
 				return false;	\
 			}	\
 			_type_ *_var_ = (_type_*)&subject;

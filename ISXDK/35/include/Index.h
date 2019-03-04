@@ -107,9 +107,9 @@ public:
 		return ret;
 	}
 
-	virtual void *Malloc(size_t Size)
+	virtual void *Malloc(size_t _Size)
 	{
-		return malloc(Size);
+		return malloc(_Size);
 	}
 	virtual void Free(const void *mem)
 	{

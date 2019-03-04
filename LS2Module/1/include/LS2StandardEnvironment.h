@@ -21,7 +21,7 @@ namespace LavishScript2
 
 		// here we have a bunch of macros to simplify handling LavishScript 2.0 objects in your custom Methods and Properties
 #define LS2_REQUIRE_NOINPUTS()	\
-			if (pInputs && pInputs->GetSize()!=0)\
+			if (pInputs && pInputs->GetCount()!=0)\
 			{\
 				*ppException = new LavishScript2::LS2InvalidParameterException(L"Require NO inputs");\
 				return false;\
@@ -34,7 +34,7 @@ namespace LavishScript2
 				return false;\
 			}\
 			\
-			if (!(pInputs->GetSize() ## _comparison_))\
+			if (!(pInputs->GetCount() ## _comparison_))\
 			{\
 			*ppException = new LavishScript2::LS2InvalidParameterException(L"RequireInputs"## #_comparison_);\
 				return false;				\
